@@ -1,10 +1,14 @@
 
 const app = require('express')()
 
+app.get('/name',(req,res)=>res.send('mregydev'))
+
+app.get('/age',(res,res)=>res.send("12"))
 
 //this is the decroator function
-function action(options) {
+function endpoint(options) {
 
+    //this is the decorator function
     return (target) => {
 
         let { verb, url } = options
@@ -17,18 +21,17 @@ function action(options) {
 
 class StudentController {
 
+    //function for name endpoint
     @action({ verb: "get", url: "/name" })
     getName() {
         return "mregydev"
     }
 
-
+    //function for age endpoint
     @action({ verb: "get", url: "/age" })
     getAge() {
         return "12"
     }
-
-
 }
 
 
